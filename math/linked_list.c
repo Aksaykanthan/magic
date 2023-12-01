@@ -22,7 +22,6 @@ struct Node* read_node(struct Node* node){
     return read_node(node);
 }
 
-
 struct Node* append_node(struct Node* head, int val) {
     struct Node* x = create_node(val);
     if (head == NULL) {
@@ -56,7 +55,6 @@ struct Node* delete_node(struct Node* head, int val){
     }
     free(curr);
     return head;
-
 }
 
 int main(){
