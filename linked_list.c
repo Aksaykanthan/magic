@@ -57,6 +57,34 @@ struct Node* delete_node(struct Node* head, int val){
     return head;
 }
 
+int mid(struct Node* head){
+    struct Node* temp = head;
+    int c = 0;
+    while (temp != NULL){
+        temp = temp->next;
+        c++;
+    } 
+    int m = (c%2 == 0) ? c/2 + 1 : (c+1)/2;
+    
+    temp = head;
+    for (int k=0;k < m-1;k++){
+        temp = temp->next;
+    }
+    // printf("%d \n",temp->value);
+    return temp->value;
+}
+
+struct Node* reverse(struct Node* head)
+{
+    if (head == NULL) return head;
+    struct Node* temp = reverse(head->next);
+    // temp->next = (head == NULL) ? head;
+    printf("%d ",head->value);
+
+    return head;
+}
+
+
 int main(){
     int n = 5;
     struct Node* head = create_node(1);
@@ -65,9 +93,12 @@ int main(){
         append_node(head,i+2);
     }
 
-    read_node(head);
+    printf("%d ",reverse(head)->value);
+    // mid(head);
+    // read_node(head);
+    // printf(" \n");
+    // head = delete_node(head,1);
+    // read_node(head);
     printf(" \n");
-    head = delete_node(head,1);
-    read_node(head);
-    printf(" \n");
+
 }
