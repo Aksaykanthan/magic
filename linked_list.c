@@ -57,48 +57,94 @@ struct Node* delete_node(struct Node* head, int val){
     return head;
 }
 
-int mid(struct Node* head){
-    struct Node* temp = head;
-    int c = 0;
-    while (temp != NULL){
-        temp = temp->next;
-        c++;
-    } 
-    int m = (c%2 == 0) ? c/2 + 1 : (c+1)/2;
-    
-    temp = head;
-    for (int k=0;k < m-1;k++){
-        temp = temp->next;
+struct Node*  mid(struct Node* head) {
+    if (head == NULL || head->next == NULL) {
+        return head;  
     }
-    // printf("%d \n",temp->value);
-    return temp->value;
+
+    struct Node* x = head;
+    struct Node* y = head;
+
+    while (y != NULL && y->next != NULL) {
+        x = x->next;
+        y = y->next->next;
+    }
+
+    return x;
 }
 
 struct Node* reverse(struct Node* head)
 {
-    if (head == NULL) return head;
+    if (head == NULL || head->next == NULL) return head;
     struct Node* temp = reverse(head->next);
-    // temp->next = (head == NULL) ? head;
-    printf("%d ",head->value);
 
-    return head;
+    head->next->next = head;
+    head->next = NULL;
+
+    return temp;
+}
+
+int isPalindrome(struct Node* head) {
+    if (head == NULL || head->next == NULL) {
+        return 1; 
+    }
+
+    struct Node* mid_elem = mid(head);
+    struct Node* sechalf = reverse(mid_elem);
+
+    while (head != NULL && sechalf != NULL) {
+        if (head->value != sechalf->value) {
+            return 0; 
+        }
+        head = head->next;
+        sechalf = sechalf->next;
+    }
+
+    return 1; 
 }
 
 
-int main(){
-    int n = 5;
-    struct Node* head = create_node(1);
-
-    for (int i=0;i<5;i++){
-        append_node(head,i+2);
+int iscycle(struct Node* head) {
+    if (head == NULL || head->next == NULL) {
+        printf("Not a Cycle");
+        return 0; 
     }
 
-    printf("%d ",reverse(head)->value);
+    struct Node* x = head;
+    struct Node* y = head;
+
+    while (y != NULL && y->next != NULL) {
+        x = x->next;
+        y = y->next->next;
+
+        if (x == y) {
+            printf("It is a Cycle");
+            return 1; 
+        }
+    }
+
+    printf("Not a Cycle");
+    return 0; 
+}
+
+int main(){
+    int n = 5;
+    struct Node* head = create_node(0);
+
+    for (int i=1;i<5;i++){
+        append_node(head,i);
+    }
+    for (int i=5;i>=0;i--){
+        append_node(head,i);
+    }
+
+    read_node(head);
+    printf("%d ",isPalindrome(head));
     // mid(head);
     // read_node(head);
     // printf(" \n");
     // head = delete_node(head,1);
-    // read_node(head);
     printf(" \n");
+
 
 }
