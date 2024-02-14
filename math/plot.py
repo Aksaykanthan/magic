@@ -7,14 +7,14 @@ def plot(file):
         data = f.readlines()
         
     coordinates = []
-    
+    print(*data)
     for i in data:
         d = i.split("\t")
-        y = float(d[0])
         x = float(d[1][:-1])
+        y = float(d[0])
         coordinates.append((x,y))
     
-    xpoints = np.array([i[0] for i in coordinates])
+    xpoints = np.array([i[1] for i in coordinates])
     ypoints = np.array([i[0] for i in coordinates])
 
     plt.plot(xpoints, ypoints)
@@ -22,4 +22,4 @@ def plot(file):
 
     print(*coordinates,sep="\n")
 
-plot(input("Enter the path to the txt file : "))
+plot("app.txt")

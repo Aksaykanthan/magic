@@ -1,3 +1,5 @@
+package java;
+
 public class binTodec {
     public static void main(String[] args) {
         int num = 111;

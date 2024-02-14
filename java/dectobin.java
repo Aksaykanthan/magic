@@ -1,3 +1,5 @@
+package java;
+
 public class dectobin {
     public static void d2b(int num) {
         if (num >= 1) {
@@ -8,7 +10,6 @@ public class dectobin {
 
     public static void main(String[] args) {
         int num = 7;
-        
         d2b(num);
         System.out.println();
     }
@@ -17,3 +18,7 @@ public class dectobin {
 // * find the 2nd largest element in a array
 // * Reverse a array 
 // * print duplicate numbers in a array
+// * check whether a array is A.P  - print sum of them 
+// * transpose of a matrix
+// * check whether a number is prime or not
+

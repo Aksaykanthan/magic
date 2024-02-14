@@ -1,3 +1,5 @@
+package java;
+
 public class FindShortestDistance {
     public static double distance(double[] v1, double[] v2,int d) {
         double dis = 0;

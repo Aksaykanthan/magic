@@ -1,3 +1,5 @@
+package java;
+
 public class PrintPrime {
 
     public static int is_prime(int num){
